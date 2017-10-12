@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :users
+  resources :posts
   root to: 'products#index'
 
   resources :products, only: [:index, :show]
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
     resources :categories, only: [:new, :index, :create]
+
+    get '/users/new' => 'users#new' 
 
   end
 
