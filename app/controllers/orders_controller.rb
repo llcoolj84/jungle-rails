@@ -8,9 +8,12 @@ class OrdersController < ApplicationController
     charge = perform_stripe_charge
     order  = create_order(charge)
 
-    if order.valid?
+    # add email message here 
+    if order.valid?  
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
+       # Tell the UserMailer to send a welcome email after save
+       UserMailer.welcome_email(@user).deliver_later
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
