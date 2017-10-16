@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20171013191006) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "product_id" , presence:true 
-    t.integer  "user_id", presence:true 
-    t.text     "description", null:false 
-    t.integer  "rating" , null:false 
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.text     "description", null: false
+    t.integer  "rating",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
